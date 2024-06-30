@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.10"
 pandas = "^2.2.2"
 loguru = "^0.7.2"
+requests = "^2.32.3"
 
 
 [tool.poetry.group.test.dependencies]
@@ -21,7 +22,48 @@ pytest-mock = "^3.14.0"
 black = "^24.4.2"
 ruff = "^0.4.7"
 pre-commit = "^3.7.1"
+pylint = "^3.2.2"
+pdoc3 = "^0.10.0"
+pdoc = "^14.5.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 128
+target-version = ['py39', 'py310', 'py311']
+preview = true
+exclude = '''
+/(
+    \.eggs         # exclude a few common directories in the
+  | \.git          # root of the project
+  | \.mypy_cache
+  | \.vscode
+  | build‘
+  | dist
+  | doc/tutorial
+  | doc/_build
+  | doc/auto_examples
+  | sklearn/externals
+  | asv_benchmarks/env
+)/
+'''
+
+[tool.ruff]
+line-length = 128
+target-version = "py38"
+exclude=[
+    ".git",
+    "__pycache__",
+    "dist",
+    "sklearn/externals",
+    "doc/_build",
+    "doc/auto_examples",
+    "doc/tutorial",
+    "build",
+    "asv_benchmarks/env",
+    "asv_benchmarks/html",
+    "asv_benchmarks/results",
+    "asv_benchmarks/benchmarks/cache",
+]
