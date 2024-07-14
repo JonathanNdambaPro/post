@@ -1,24 +1,20 @@
-text = """Monter une data stack, c’est aussi cher que 100 Urus Mansory ou aussi complexe qu’une fusée SpaceX 😬
+text = """
+T'as encore codé à la va-vite et tu nous as encore fait n'importe quoi 🤦🏻
 
-On me parle souvent de deux options :
-💸 On utilise que des services managed, puis 3 mois plus tard tu comprends pourquoi AWS est l’asset le plus rentable d’Amazon.
-😣 On monte tout dans un K8S et c’est parti pour des maux de tête si t’es pas ops.
 
-Pourtant, on peut facilement créer une data stack gratuite, robuste et facile à mettre en place 👇
+Tu as un pipeline de données avec plein de formats de données différents.
+Au début, c'était que des CSV, puis des XLS et des JSON. Le problème, c'est que dans la précipitation, tu as créé des classes pour chaque type de fichier, mais qui n'ont pas la même interface…
+Niveau couplage, on peut difficilement faire pire…
 
-🐍 Python : Bon, je ne suis pas vraiment obligé de t’expliquer pourquoi, pas vrai ?
-🗃️ SQL : (Bon, je ne suis pas vraiment obligé de t’expliquer pourquoi, pas vrai ?)²
-🏗️ Dlthub (Ingestion) : Le problème d'Airbyte/Fivetran c’est que soit la config c'est du K8S ou le service-managed, Dlt fait la même chose mais seulement avec du Python.
-💾 PostgreSQL (OLTP) : Pour avoir l’état courant de la structure.
-🌐 DuckDB (OLAP) : Pour avoir l’état des données historiques et permettre aux analystes de s’amuser sans casser la prod.
-🛠️ Dbt : Pour intégrer les principes de software dans le SQL.
-</> FastAPI : Pour exposer ces données facilement.
-📊 Streamlit/Plotly : Pour faire de jolis graphiques sans utiliser ce truc qu’ils appellent Power BI.
-🔄 Airflow/Dagster : Pour orchestrer le tout.
-📦 Docker : Bon, c’est le plus dur de la liste mais plus de "ça marche pas sur ma machine".
 
-Avec ça, on a une bonne stack facile à mettre en place pour tester son MVP avant de passer aux choses sérieuses. Sinon, toi tu fais comment ?
-Dis-moi tout en commentaire.
+Mais tout n'est pas fini, tu peux t'en sortir avec le pattern Adapter 👇
+♻️ Réutilisation de code existant : pas besoin de tout recommencer, tu vas créer une classe qui va réutiliser ton code
+🔧 Flexibilité et extensibilité : Tu pourras ajouter de nouvelles classes comme YAML par exemple très facilement
+🔀 Migration simplifiée : Avec les adapters, si tu veux passer de CSV à pd.read_csv, c'est facile et à un seul endroit
+📋 Standardisation de l'interface : Comme les adapters auront les mêmes méthodes, elles sont facilement interchangeables
+
+
+Comme tu le vois, les design patterns sont souvent des solutions très utiles. Sinon, tu connais des design patterns ? Si oui, lesquels utilises-tu le plus ? Dis-moi tout en commentaire !
 """
 
 lenght_text = len(text)
