@@ -1,13 +1,11 @@
 from typing import Annotated
 
-from fastapi import APIRouter, FastAPI, Path, Query
-
-app = FastAPI()
+from fastapi import APIRouter, Path, Query
 
 router = APIRouter(prefix="/subapp_2", tags=["subapp_2"])
 
 
-@app.get("/items/", tags=["items"])
+@router.get("/items", tags=["items"])
 async def read_items(
     q: Annotated[
         str | None,
@@ -27,13 +25,13 @@ async def read_items(
     return results
 
 
-@app.get("/items/multiples", tags=["items"])
+@router.get("/items/multiples", tags=["items"])
 async def read_items_multiple(q: Annotated[list[str] | None, Query()] = None):
     query_items = {"q": q}
     return query_items
 
 
-@app.get("/items/{item_id}", tags=["items_different"])
+@router.get("/items/{item_id}", tags=["items_different"])
 async def read_items_path_query(
     item_id: Annotated[int, Path(title="The ID of the item to get", ge=0, le=1000)],
     q: Annotated[

@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from routers import subapp_1, subapp_2
 
 description = """
-API Beauty is a templaste api who for anyone who just want the minimal requirement for deploying data 🚀
+API Beauty is a templaste api who
+for anyone who just want the minimal requirement for deploying data 🚀
 
 ## Items
 
@@ -27,7 +28,6 @@ app = FastAPI(
         "name": "venom",
     },
 )
-
 
 app.include_router(subapp_1.router)
 app.include_router(subapp_2.router)

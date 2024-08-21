@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "template-delta-rs"
+version = "0.1.0"
+description = ""
+authors = ["jojopvcp <jonathan.ndamba@ext.groupepvcp.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+deltalake = "^0.18.2"
+pandas = "^2.2.2"
+polars = "^1.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

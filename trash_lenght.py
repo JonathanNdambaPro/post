@@ -1,20 +1,22 @@
 text = """
-T'as encore codé à la va-vite et tu nous as encore fait n'importe quoi 🤦🏻
+Mettre son modèle ML en production, attendre sans jamais le réentraîner, voir que pour faire des prévisions de stock, il a en output des lettres 🤡
 
 
-Tu as un pipeline de données avec plein de formats de données différents.
-Au début, c'était que des CSV, puis des XLS et des JSON. Le problème, c'est que dans la précipitation, tu as créé des classes pour chaque type de fichier, mais qui n'ont pas la même interface…
-Niveau couplage, on peut difficilement faire pire…
+
+L'IA est pas mal à la mode, on fait nos petites inférences, on met le tout dans un docker et puis c'est parti !
+Au début tout se passe bien, ensuite le modèle se dégrade sauf qu'on n'avait rien prévu et d'ailleurs on ne l'avait même pas monitoré....
 
 
-Mais tout n'est pas fini, tu peux t'en sortir avec le pattern Adapter 👇
-♻️ Réutilisation de code existant : pas besoin de tout recommencer, tu vas créer une classe qui va réutiliser ton code
-🔧 Flexibilité et extensibilité : Tu pourras ajouter de nouvelles classes comme YAML par exemple très facilement
-🔀 Migration simplifiée : Avec les adapters, si tu veux passer de CSV à pd.read_csv, c'est facile et à un seul endroit
-📋 Standardisation de l'interface : Comme les adapters auront les mêmes méthodes, elles sont facilement interchangeables
+Comment aurait-on pu faire pour gérer ça ?
+
+Pas le choix, on doit tester en production, mais avec une bonne stratégie de déploiement 👇
+⚫Shadow Deployment : Deux modèles en simultané, avec un champion qui est exposé à l'audience et un challenger qui lui ne l'est pas, celui qui a le meilleur score prend la place de champion
+📊A/B Testing : Cette fois nos deux modèles sont exposés au trafic mais pas au même, il faut impérativement que les échantillons du champion et du challenger soient distincts et aléatoires
+🐥Canary release : Ressemble à l'A/B test sauf qu'il n'y a pas d'aléatoire et que le challenger est obligatoirement exposé à une plus petite partie du trafic, c'est une sécurité pour éviter de finir comme CrowdStrike
 
 
-Comme tu le vois, les design patterns sont souvent des solutions très utiles. Sinon, tu connais des design patterns ? Si oui, lesquels utilises-tu le plus ? Dis-moi tout en commentaire !
+
+Dans l'industrie la méthode la plus utilisée est l'A/B testing pour le moment mais la méthode Bandit est prometteuse. Sinon toi tu faisais comment ? Dis-moi tout en commentaire !
 """
 
 lenght_text = len(text)
