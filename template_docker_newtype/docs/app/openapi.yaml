@@ -1,0 +1,183 @@
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    Item:
+      properties:
+        description:
+          anyOf:
+          - maxLength: 300
+            type: string
+          - type: 'null'
+          examples:
+          - A very nice Item
+          title: The description of the item
+        name:
+          examples:
+          - Foo
+          title: Name
+          type: string
+        price:
+          description: The price must be greater than zero
+          exclusiveMinimum: 0.0
+          title: Price
+          type: number
+        tax:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Tax
+      required:
+      - name
+      - price
+      title: Item
+      type: object
+    ModelName:
+      enum:
+      - alexnet
+      - resnet
+      - lenet
+      title: ModelName
+      type: string
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+info:
+  description: "\nAPI Beauty is a templaste api who for anyone who just want the minimal\
+    \ requirement for deploying data \U0001F680\n\n## Items\n\n**subapp_1**: exemple\
+    \ of router 1 \n\n**subapp_2**: exemple of router 2\n\n## Users\n\n* **anyone\
+    \ who need it**\n"
+  title: API template
+  version: 0.0.1
+openapi: 3.1.0
+paths:
+  /subapp_1/:
+    get:
+      operationId: root_subapp_1__get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Root
+      tags:
+      - subapp_1
+  /subapp_1/items/{item_id}:
+    get:
+      operationId: read_item_subapp_1_items__item_id__get
+      parameters:
+      - in: path
+        name: item_id
+        required: true
+        schema:
+          title: Item Id
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Item
+      tags:
+      - subapp_1
+  /subapp_1/items_post:
+    post:
+      description: Create an item with all the information, name, description, price,
+        tax and a set of unique tags
+      operationId: create_item_subapp_1_items_post_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Item'
+              examples:
+              - description: A very nice Item
+                name: Foo
+                price: 35.4
+                tax: 3.2
+              title: Item
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: The created item
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create an item
+      tags:
+      - subapp_1
+  /subapp_1/models/{model_name}:
+    get:
+      operationId: get_model_subapp_1_models__model_name__get
+      parameters:
+      - in: path
+        name: model_name
+        required: true
+        schema:
+          $ref: '#/components/schemas/ModelName'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Model
+      tags:
+      - subapp_1
+  /subapp_1/users/me:
+    get:
+      operationId: read_user_me_subapp_1_users_me_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Read User Me
+      tags:
+      - subapp_1
