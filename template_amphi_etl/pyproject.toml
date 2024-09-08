@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "template-amphi-etl"
+version = "0.1.0"
+description = ""
+authors = ["JojoBizarreVenom <jonathan@venom.engineering>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+amphi-etl = "^0.5.94"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

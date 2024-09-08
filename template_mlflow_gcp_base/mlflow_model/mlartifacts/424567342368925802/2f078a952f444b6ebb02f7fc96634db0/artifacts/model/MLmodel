@@ -1,0 +1,28 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model:
+        path: artifacts/model.joblib
+        uri: model.joblib
+      vectorizer:
+        path: artifacts/vectorizer.joblib
+        uri: ./vectorizer.joblib
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.12.5
+    streamable: false
+mlflow_version: 2.16.0
+model_size_bytes: 2643388
+model_uuid: a98e10d98d904212b2d9b52a49471d9b
+run_id: 2f078a952f444b6ebb02f7fc96634db0
+signature:
+  inputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1, 87931]}}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2024-09-08 17:53:43.069504'

@@ -1,0 +1,11 @@
+channels:
+- defaults
+dependencies:
+- matplotlib
+- numpy
+- pandas
+- scikit-learn
+- pip
+- pip:
+  - mlflow
+name: simple-nlp
