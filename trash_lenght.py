@@ -1,11 +1,43 @@
 text = """
-Le data modeling, c'est comme le papier toilette : mieux vaut ne pas oublier de s'en servir.
-Oui oui, au début on décide de s'en passer, il faut aller vite et délivrer, puis on se rend compte qu'on ne comprend plus rien à la structure de notre data warehouse. Puis vient le moment où on paie un cabinet de conseil plusieurs millions pour rattraper cette immondice.
-Pourtant, il existe plusieurs méthodes pour échapper à ce type de problème 👇
-3ᵉ forme normale : L'une des méthodes les plus anciennes et les plus utilisées pour les OLTP. L'idée ici est de supprimer la redondance de données, supprimer les anomalies et réduire la volumétrie des données. En contrepartie, on augmente la complexité des requêtes.
-Kimball : Ou star schema, les tables de faits et de dimensions facilitent l'accès aux données avec des requêtes simples et intuitives. On a plus de redondance de données et on doit gérer le slowly changing dimension.
-One Big Table : Tout dans une seule table. En termes d'accessibilité, on ne peut pas faire mieux, mais au niveau de la redondance et de la volumétrie de données, on est mal, et pour les modifications de données, bonne chance.
-Dans la majorité des cas, plusieurs solutions doivent être utilisées : une solution OLTP avec une 3ème forme normale et une autre avec Kimball/OBT. Sinon, tu fais comment toi ? Dis-moi tout en commentaire !
+L’infrastructure en data ? Lol, pourquoi ne pas me torturer à la place, on irait plus vite à l’essentiel. 🤷‍♂️
+
+
+Plus sérieusement, cela peut rapidement devenir un cauchemar, entre les notions de réseau et les services cloud, ou pire encore, en on-premise… Quand on vient d’un parcours en data science c’est pas évident…
+
+
+
+
+Comment faire ? Bon, au début, pas le choix, il faut apprendre...
+
+
+Mais une fois qu'on a maîtrisé les bases, est-on condamné à faire des lignes de commande ?
+
+
+
+
+C’est là que Terraform intervient 👇
+
+
+🌟 Cloud Agnostic : Il fonctionne avec tous les clouds, à part les ressources, tout reste pareil.
+
+
+🔂 Idempotent : Pour une entrée donnée, on obtient toujours la même sortie, peu importe l’état de l’infra.
+
+
+📢 Déclaratif : On décrit ce que l'on veut, sans indiquer comment l'obtenir, ce qui le rend simple à prendre en main.
+
+
+⚙️ Automatisation : On peut facilement l’intégrer dans une pipeline CI/CD.
+
+
+
+
+Je pense qu’avec ça, tu galèreras moins avec l’infra.
+
+
+Et toi, tu utilises quoi ? Pulumi ? Dis-moi tout en commentaire !
+
+
 """
 lenght_text = len(text)
 

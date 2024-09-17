@@ -1,8 +1,43 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Path, Query
+from schema.schema import Item
 
 router = APIRouter(prefix="/subapp_2", tags=["subapp_2"])
+
+
+@router.get("/simple_str", tags=["simple"])
+async def simple_str(
+    q: str = "lol",
+):
+    return q
+
+
+@router.get("/simple_int", tags=["simple"])
+async def simple_int(
+    q: int = 1,
+):
+    return q
+
+
+@router.get("/simple_float", tags=["simple"])
+async def simple_float(
+    q: float = 1.0,
+):
+    return q
+
+
+@router.get("/response_model")
+async def response_model() -> Item:
+    return Item(name="Portal Gun", price=42.0, description="some example", tax=0.3)
+
+
+@router.get("/multi_responsez_model")
+async def multi_responsez_model() -> list[Item]:
+    return [
+        Item(name="Portal Gun", price=42.0, description="some example", tax=0.3),
+        Item(name="Plumbus", price=32.0),
+    ]
 
 
 @router.get("/items", tags=["items"])

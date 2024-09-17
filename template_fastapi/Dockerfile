@@ -5,4 +5,5 @@ COPY . /app
 
 RUN pip3 install -r requirements.txt
 
-CMD gunicorn app:app -c gunicorn_config.py
+EXPOSE 8080
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
